@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug builds only: a launcher-less activity that renders the real session screens on made-up
+  demo data, for promotional screenshots (see tools/screenshots/README.md). Release builds never
+  include it.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <activity
+            android:name="dev.oms.remote.promo.PromoActivity"
+            android:exported="true"
+            android:taskAffinity="dev.oms.remote.promo"
+            android:excludeFromRecents="true"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+</manifest>

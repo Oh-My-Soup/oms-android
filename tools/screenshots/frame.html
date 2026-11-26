@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+  Store-style frame for one promo shot (1080x1920). build.py fills the {{...}} slots and renders
+  this page with headless Chromium (`build.py --keep-html` keeps the filled pages for a preview).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>oms remote promo frame</title>
+<style>
+  :root {
+    --bg-top: #0b1516;
+    --bg-bottom: #10302c;
+    --glow: rgba(110, 214, 196, 0.22);
+    --ink: #f1f7f5;
+    --muted: #a7bcb7;
+    --accent: #8fdccd;
+    --bezel: #050808;
+    --ring: #2b3d3b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(ellipse 760px 900px at 50% 1180px, var(--glow), transparent 70%),
+      linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    color: var(--ink);
+    font-family: "Inter", "Adwaita Sans", "Noto Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .caption {
+    position: absolute;
+    top: 84px;
+    left: 72px;
+    right: 72px;
+    text-align: center;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "JetBrains Mono", "Adwaita Mono", "Hack", ui-monospace, monospace;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+  .brand .dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #7dd58c;
+    box-shadow: 0 0 14px rgba(125, 213, 140, 0.7);
+  }
+  h1 {
+    margin-top: 26px;
+    font-size: 70px;
+    line-height: 1.08;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  p {
+    margin: 20px auto 0;
+    max-width: 880px;
+    font-size: 34px;
+    line-height: 1.36;
+    font-weight: 450;
+    color: var(--muted);
+    text-wrap: balance;
+  }
+  .phone {
+    position: absolute;
+    left: 50%;
+    bottom: 56px;
+    width: 681px;  /* 653 x 1452 screen (the 1080 x 2400 capture) + 14px bezel */
+    height: 1480px;
+    transform: translateX(-50%);
+    padding: 14px;
+    border-radius: 72px;
+    background: var(--bezel);
+    box-shadow:
+      0 0 0 2px var(--ring),
+      0 40px 90px rgba(0, 0, 0, 0.55),
+      0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  .phone img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 58px;
+  }
+</style>
+</head>
+<body>
+  <div class="caption">
+    <div class="brand"><span class="dot"></span>oms remote</div>
+    <h1>{{headline}}</h1>
+    <p>{{subline}}</p>
+  </div>
+  <div class="phone"><img src="{{screenshot}}" alt=""></div>
+</body>
+</html>

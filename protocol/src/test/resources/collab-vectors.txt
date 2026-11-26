@@ -1,0 +1,159 @@
+## Fixed inputs
+key (32B)          = 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+writeToken (16B)   = a0a1a2a3a4a5a6a7a8a9aaabacadaeaf
+writeToken b64url  = oKGio6SlpqeoqaqrrK2urw
+roomId bytes (16B) = 101112131415161718191a1b1c1d1e1f
+roomId (b64url)    = EBESExQVFhcYGRobHB0eHw
+iv (12B)           = 000102030405060708090a0b
+
+## Formatted links (formatCollabLink / formatCollabWebLink)
+full, default relay        : EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+view, default relay        : EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8
+full web, default relay    : https://my.omp.sh/#EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+view web, default relay    : https://my.omp.sh/#EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8
+full, wss://relay.example.com:8443/infra/oms/ : relay.example.com:8443/infra/oms/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+full, ws://10.66.66.8      : ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+web for ws://10.66.66.8 (no webUrl) : 
+web for ws://10.66.66.8 + webUrl http://10.66.66.8 : http://10.66.66.8/#ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+web for relay.example.com + webUrl https://web.example/tools/collab/ : https://web.example/tools/collab/#relay.example.com/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v
+
+## Parsed links (parseCollabLink)
+input : "EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "EBESExQVFhcYGRobHB0eHw#AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"
+  wsUrl     : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: (none: view-only link)
+input : "  https://my.omp.sh/#EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v  "
+  wsUrl     : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "https://my.omp.sh/#EBESExQVFhcYGRobHB0eHw%23AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "my.omp.sh/#EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://my.omp.sh/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "relay.example.com:8443/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://relay.example.com:8443/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://relay.example.com:8443/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "wss://relay.example.com:443/infra/oms/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"
+  wsUrl     : wss://relay.example.com/infra/oms/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://relay.example.com/infra/oms/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: (none: view-only link)
+input : "https://Relay.Example.com/r/EBESExQVFhcYGRobHB0eHw#AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://relay.example.com/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://relay.example.com/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "http://relay.example.com:80/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : ws://relay.example.com/r/EBESExQVFhcYGRobHB0eHw
+  connect   : ws://relay.example.com/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw
+  connect   : ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "ws://10.66.66.8/infra/relay/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : ws://10.66.66.8/infra/relay/r/EBESExQVFhcYGRobHB0eHw
+  connect   : ws://10.66.66.8/infra/relay/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "https://web.example/collab/#relay.example.com/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://relay.example.com/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://relay.example.com/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "http://10.66.66.8/#ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw
+  connect   : ws://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "https://web.example/tools/collab/#wss://relay.example/infra/oms/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  wsUrl     : wss://relay.example/infra/oms/r/EBESExQVFhcYGRobHB0eHw
+  connect   : wss://relay.example/infra/oms/r/EBESExQVFhcYGRobHB0eHw?role=guest
+  roomId    : EBESExQVFhcYGRobHB0eHw
+  key       : 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+  writeToken: a0a1a2a3a4a5a6a7a8a9aaabacadaeaf (hello.writeToken="oKGio6SlpqeoqaqrrK2urw")
+input : "ftp://10.66.66.8/r/EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh-goaKjpKWmp6ipqqusra6v"
+  error: Unsupported relay URL scheme: ftp:
+input : "EBESExQVFhcYGRobHB0eHw.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwd"
+  error: Collab link key must be 32 (view) or 48 (full) base64url bytes
+input : "https://web.example/#not-a-collab-link"
+  error: Collab link must contain a /r/<roomId> path
+
+## AES-256-GCM seal vectors (no AAD, 12B IV, 16B tag appended)
+### guest hello (full link, paged history)
+plaintext (UTF-8) : {"t":"hello","proto":5,"name":"android","history":"paged","writeToken":"oKGio6SlpqeoqaqrrK2urw"}
+plaintext hex     : 7b2274223a2268656c6c6f222c2270726f746f223a352c226e616d65223a22616e64726f6964222c22686973746f7279223a227061676564222c227772697465546f6b656e223a226f4b47696f36536c7071656f71617172724b32757277227d (96 bytes)
+ciphertext hex    : 3c20a239ffc7aa7ee12df8a99dcb081feca2e816ca4e735e560688e03f5322d36f74dc93c6a530b456cc169efce85a41cc6342fd3bb1c6be1dbb086e6a8a818ba453ad1fbdf31c43731fed0780b95d8448fbac0d0702221a8fb6acb90a879bf0
+tag hex           : 83e0314f1d9bd61d4a654ae311d43261
+sealed hex        : 000102030405060708090a0b3c20a239ffc7aa7ee12df8a99dcb081feca2e816ca4e735e560688e03f5322d36f74dc93c6a530b456cc169efce85a41cc6342fd3bb1c6be1dbb086e6a8a818ba453ad1fbdf31c43731fed0780b95d8448fbac0d0702221a8fb6acb90a879bf083e0314f1d9bd61d4a654ae311d43261 (124 bytes = 12 + 96 + 16)
+envelope hex      : 00000000000102030405060708090a0b3c20a239ffc7aa7ee12df8a99dcb081feca2e816ca4e735e560688e03f5322d36f74dc93c6a530b456cc169efce85a41cc6342fd3bb1c6be1dbb086e6a8a818ba453ad1fbdf31c43731fed0780b95d8448fbac0d0702221a8fb6acb90a879bf083e0314f1d9bd61d4a654ae311d43261 (peerId 0)
+
+### guest prompt
+plaintext (UTF-8) : {"t":"prompt","text":"héllo 👋"}
+plaintext hex     : 7b2274223a2270726f6d7074222c2274657874223a2268c3a96c6c6f20f09f918b227d (35 bytes)
+ciphertext hex    : 3c20a239ffc7b269e22ce7ff93c55a19e6aef316ca5937bf910b89ea3d999f238a32d3
+tag hex           : 16a0cc02c49e004f71873019eb6c0b89
+sealed hex        : 000102030405060708090a0b3c20a239ffc7b269e22ce7ff93c55a19e6aef316ca5937bf910b89ea3d999f238a32d316a0cc02c49e004f71873019eb6c0b89 (63 bytes = 12 + 35 + 16)
+envelope hex      : 00000000000102030405060708090a0b3c20a239ffc7b269e22ce7ff93c55a19e6aef316ca5937bf910b89ea3d999f238a32d316a0cc02c49e004f71873019eb6c0b89 (peerId 0)
+
+### guest ui-response cancel (value omitted)
+plaintext (UTF-8) : {"t":"ui-response","reqId":7}
+plaintext hex     : 7b2274223a2275692d726573706f6e7365222c227265714964223a377d (29 bytes)
+ciphertext hex    : 3c20a239ffc7b772a033f2f8c186161ee6f4ab16821e2e355c45dfb260
+tag hex           : 55800bf156b25a773cd784ab23df5ea8
+sealed hex        : 000102030405060708090a0b3c20a239ffc7b772a033f2f8c186161ee6f4ab16821e2e355c45dfb26055800bf156b25a773cd784ab23df5ea8 (57 bytes = 12 + 29 + 16)
+envelope hex      : 00000000000102030405060708090a0b3c20a239ffc7b772a033f2f8c186161ee6f4ab16821e2e355c45dfb26055800bf156b25a773cd784ab23df5ea8 (peerId 0)
+
+### guest snapshot-ack
+plaintext (UTF-8) : {"t":"snapshot-ack","chunks":1}
+plaintext hex     : 7b2274223a22736e617073686f742d61636b222c226368756e6b73223a317d (31 bytes)
+ciphertext hex    : 3c20a239ffc7b175ec31e4e3de9d550ce0bda518d2183709560c96a727587d
+tag hex           : 1ee4dd9e726a1e18de89ed4537cf3df8
+sealed hex        : 000102030405060708090a0b3c20a239ffc7b175ec31e4e3de9d550ce0bda518d2183709560c96a727587d1ee4dd9e726a1e18de89ed4537cf3df8 (59 bytes = 12 + 31 + 16)
+envelope hex      : 00000000000102030405060708090a0b3c20a239ffc7b175ec31e4e3de9d550ce0bda518d2183709560c96a727587d1ee4dd9e726a1e18de89ed4537cf3df8 (peerId 0)
+
+### host ui-request-end targeted at peer 3
+plaintext (UTF-8) : {"t":"ui-request-end","reqId":7}
+plaintext hex     : 7b2274223a2275692d726571756573742d656e64222c227265714964223a377d (32 bytes)
+ciphertext hex    : 3c20a239ffc7b772a033f2fac48c0b19aeb3e950d2577d0e5d16ace13f5337cf
+tag hex           : 4f997cda43f5a23d13b7673fd4a4a9f3
+sealed hex        : 000102030405060708090a0b3c20a239ffc7b772a033f2fac48c0b19aeb3e950d2577d0e5d16ace13f5337cf4f997cda43f5a23d13b7673fd4a4a9f3 (60 bytes = 12 + 32 + 16)
+envelope hex      : 00000003000102030405060708090a0b3c20a239ffc7b772a033f2fac48c0b19aeb3e950d2577d0e5d16ace13f5337cf4f997cda43f5a23d13b7673fd4a4a9f3 (peerId 3)
+
+tamper check (last tag bit flipped) -> decrypt fails: true
+
+## applyCollabStream vector
+baseline : {"role":"assistant","content":[{"type":"thinking","thinking":"Let me"},{"type":"text","text":"Hel"}],"api":"anthropic-messages","provider":"anthropic","model":"claude-x","usage":{"input":10,"output":2,"cacheRead":0,"cacheWrite":0,"totalTokens":12,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"stop","timestamp":1730000000000}
+frame    : {"t":"stream-delta","id":1,"previousRevision":0,"revision":1,"patch":{"metadata":{"role":"assistant","api":"anthropic-messages","provider":"anthropic","model":"claude-x","usage":{"input":10,"output":9,"cacheRead":0,"cacheWrite":0,"totalTokens":19,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"toolUse","timestamp":1730000000000},"contentLength":3,"changes":[{"index":0,"kind":"append","field":"thinking","offset":6,"text":" think","properties":{"type":"thinking","thinkingSignature":"sig1"}},{"index":1,"kind":"append","field":"text","offset":3,"text":"lo, world","properties":{"type":"text"}},{"index":2,"kind":"replace","value":{"type":"toolCall","id":"call_1","name":"read","arguments":{"path":"README.md"}}}]}}
+result   : {"role":"assistant","api":"anthropic-messages","provider":"anthropic","model":"claude-x","usage":{"input":10,"output":9,"cacheRead":0,"cacheWrite":0,"totalTokens":19,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"toolUse","timestamp":1730000000000,"content":[{"type":"thinking","thinkingSignature":"sig1","thinking":"Let me think"},{"type":"text","text":"Hello, world"},{"type":"toolCall","id":"call_1","name":"read","arguments":{"path":"README.md"}}]}
+result deep-equals next (key order is not significant): true

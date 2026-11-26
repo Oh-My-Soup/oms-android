@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Saved links are sealed with an AndroidKeyStore key that never leaves this device, so a backed-up
+  or transferred copy could not be decrypted. Keep them out of backups and device transfers.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="oms_hosts.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="oms_hosts.xml" />
+    </device-transfer>
+</data-extraction-rules>

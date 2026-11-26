@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">oms remote</string>
+
+    <!-- Notification channels -->
+    <string name="channel_needs_input">Needs your input</string>
+    <string name="channel_needs_input_desc">Tool approvals and questions from the agent</string>
+    <string name="channel_turn_done">Turn finished</string>
+    <string name="channel_turn_done_desc">The agent finished a turn while the app was in the background</string>
+    <string name="channel_session_ended">Session ended</string>
+    <string name="channel_session_ended_desc">The host ended the session or the connection failed</string>
+    <string name="channel_session">Live session</string>
+    <string name="channel_session_desc">Shown while connected to an oms session</string>
+
+    <!-- Ongoing notification -->
+    <string name="session_default_title">oms session</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_reconnecting">Reconnecting…</string>
+    <string name="status_working">Working</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_needs_input">Needs your input</string>
+    <string name="status_ended">Ended</string>
+    <string name="status_read_only">Read-only</string>
+    <string name="status_joined">%1$s · %2$s</string>
+    <string name="action_disconnect">Disconnect</string>
+
+    <!-- Event notifications -->
+    <string name="notif_approve_title">Approve %1$s?</string>
+    <string name="notif_asking_title">oms is asking: %1$s</string>
+    <string name="notif_needs_input_public">oms needs your input</string>
+    <string name="notif_turn_finished">Turn finished · %1$s</string>
+    <string name="notif_session_ended">Session ended: %1$s</string>
+    <string name="session_ended_default">the host closed the session</string>
+    <string name="session_failed_default">the connection failed</string>
+
+    <!-- Pairing and connect errors -->
+    <string name="error_empty_link">Paste or scan a collab link.</string>
+    <string name="error_invalid_link">That is not a valid collab link.</string>
+    <string name="error_host_missing">That host was removed.</string>
+    <string name="error_link_unreadable">This saved link can no longer be read. Scan the QR code again.</string>
+    <string name="error_link_store_failed">Couldn\'t store the link securely on this device.</string>
+    <string name="error_scanner_unavailable">The QR scanner is still being installed by Google Play services. Try again in a minute, or paste the link.</string>
+    <string name="error_scan_failed">Couldn\'t scan: %1$s</string>
+    <string name="error_qr_empty">That QR code has no text.</string>
+</resources>
